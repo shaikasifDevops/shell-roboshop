@@ -6,6 +6,8 @@ INSTANCES=("Mongodb" "redis" "mysql" "rabbitmq" "catalogue" "user" "cart" "shipp
 ZONE_ID="Z0589602H1D4622W5WZ6"
 DOMAIN_NAME="devopsasif.site"
 
+echo "hello World"
+
 for instance in $@
 do
     INSTANCE_ID=$(aws ec2 run-instances --image-id ami-09c813fb71547fc4f --instance-type t3.micro --security-group-ids sg-00d78f66a8516fc2f --tag-specifications "ResourceType=instance,Tags=[{Key=Name, Value=$instance}]" --query "Instances[0].InstanceId" --output text)
